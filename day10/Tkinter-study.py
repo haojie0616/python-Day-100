@@ -208,24 +208,31 @@ Checkbutton 勾选框，所有的都可以被勾选
 Canvas 画布 规定一片区域，在上面画东西，然后可以调换位置
 '''
 # import os, getpass, time  #python3使用
-import tkinter as tk
-from pygame.examples import moveit
+# import tkinter as tk
+# # from pygame.examples import moveit
 
-window = tk.Tk()#建立窗口 对象
-window.title("my window")
-window.geometry('200x200')#中间是x字母 长和宽
+# window = tk.Tk()#建立窗口 对象
+# window.title("my window")
+# window.geometry('200x200')#中间是x字母 长和宽
 
-canvas = tk.Canvas(window,bg = 'blue',height = 100,width = 200)
-image_file = tk.PhotoImage(file = '22.gif')
-#jpg,png文件还识别不了
-image  = canvas.create_image(0,0,anchor = 'nw',image = image_file)
-#将图片放在(0,0)点，anchor是锚定点的意思，东西南北中等
+# canvas = tk.Canvas(window,bg = 'blue',height = 100,width = 200)
+# image_file = tk.PhotoImage(file = '22.gif')
+# #jpg,png文件还识别不了
+# image  = canvas.create_image(0,0,anchor = 'nw',image = image_file)
+# #将图片放在(0,0)点，anchor是锚定点的意思，东西南北中等
+# x0,y0,x1,y1 = 50,50,80,80
+# line = canvas.create_line(x0,y0,x1,y1)#在画布上画这么一条线
+# oval = canvas.create_oval(x0,y0,x1,y1,fill = 'red')#圆形
+# arc = canvas.create_arc(x0+30, y0+30, x1+30, y1+30, start=0, extent=180) #扇形，从零度开始展开，到180度
+# # rect = canvas.create_rectangle(100,30,100+20,30+20)
+# rect = canvas.create_rectangle(100, 30, 100+20, 30+20)
+# canvas.pack()
+# # b =  tk.Button(window,text = 'move',command = moveit).pack()
+# def moveit():
+#     canvas.move(rect,0,2)
+# b = tk.Button(window, text='move', command=moveit).pack()
 
-canvas.pack()
-# b =  tk.Button(window,text = 'move',command = moveit).pack()
-b = tk.Button(window, text='move', command=moveit).pack()
-
-window.mainloop()
+# window.mainloop()
 # from pygame.examples import moveit
 
 # import tkinter as tk
@@ -251,3 +258,123 @@ window.mainloop()
 
 
 # window.mainloop()
+
+'''
+Menubar 菜单，显示在窗口上方的菜单。类似于那种File。Edit那种
+'''
+# import tkinter as tk
+
+# window = tk.Tk()#建立窗口 对象
+# window.title("my window")
+# window.geometry('200x200')#中间是x字母 长和宽
+
+# l = tk.Label(window,bg = 'yellow',width = 20,text = '')
+# l.pack()
+
+# counter = 0
+# def do_job():
+#     global counter
+#     l.config(text = 'do'+str(counter))
+#     counter += 1
+# menubar = tk.Menu(window)
+# #然后开始定义菜单上的选项
+# filemenu = tk.Menu(menubar,tearoff = 1)#tearoff是能不能被分开 改成1呢，改成1之后你会发现菜单栏开始多了一个虚线行
+# menubar.add_cascade(label = 'file',menu = filemenu)#增加级联,没有这个的话不会显示file这个菜单选项
+# filemenu.add_command(label = 'New',command = do_job)
+# #以file命名filemenu
+# filemenu.add_command(label = 'Open',command = do_job)
+# filemenu.add_command(label = 'Save',command = do_job)
+# filemenu.add_separator()#增加分离线
+# filemenu.add_command(label = 'Exit',command = window.quit)
+# #这个quit是Tkinter自带的
+
+# editmenu = tk.Menu(menubar,tearoff = 1)
+# menubar.add_cascade(label = 'Edit',menu = editmenu)
+# #以file命名filemenu
+# editmenu.add_command(label = 'Cut',command = do_job)
+# editmenu.add_command(label = 'Copy',command = do_job)
+# editmenu.add_separator()#增加分离线
+# editmenu.add_command(label = 'Paste',command = do_job)
+
+# window.config(menu = menubar)#将menubar放窗口上
+
+# #想要在添加一级菜单栏，做法如下
+# submenu = tk.Menu(filemenu)#一级菜单这里填的是menubar
+# filemenu.add_cascade(label = 'Import',menu = submenu,underline = 1)#underline = 1之后就是在二级菜单多了一条线
+# submenu.add_command(label = 'Submenu1',command = do_job)
+# window.mainloop()
+
+'''
+frame 底层的框架，在上面放各种小部件，就像窗口上的窗口
+'''
+# import tkinter as tk
+
+# window = tk.Tk()#建立窗口 对象
+# window.title("my window")
+# window.geometry('200x200')#中间是x字母 长和宽
+
+# tk.Label(window,text = 'on the window').pack()
+
+# frm = tk.Frame(window)#主frame
+# frm.pack()
+# frm_l = tk.Frame(frm)
+# frm_r = tk.Frame(frm)
+# frm_l.pack(side = 'left')#放在基于主frame的左边
+# frm_r.pack(side = 'right')#放在基于主frame的右边
+
+# tk.Label(frm_l,text = 'on the frm_l1').pack()
+# tk.Label(frm_l,text = 'on the frm_l2').pack()
+# tk.Label(frm_r,text = 'on the frm_r1').pack()
+
+
+
+
+# window.mainloop()
+
+
+
+
+'''
+messagebox 弹窗
+'''
+# import tkinter as tk
+# import tkinter.messagebox
+# # from tkinter import
+# window = tk.Tk()#建立窗口 对象
+# window.title("my window")
+# window.geometry('200x200')#中间是x字母 长和宽
+
+# def hit_me():
+#     # tk.messagebox.showinfo(title = 'Hi',message = 'haha')
+#     # tk.messagebox.showwarning(title = 'Hi',message = 'nononono')
+#     # tk.messagebox.showerror(title = 'Hi',message = '11')
+#     #warnging没有致命的影响，而error出现就是有致命的影响
+#     # print(tk.messagebox.askquestion(title = 'Hi',message = 'haha'))
+#     #return 'yes' or 'no'
+#     print(tk.messagebox.askyesno(title = 'Hi',message = 'haaaha'))
+#     #return 'True' or 'False'
+# tk.Button(window,text = 'hit me',command = hit_me).pack()
+
+
+# window.mainloop()
+
+'''
+pack , grid ,place 放置的不同
+'''
+import tkinter as tk
+# import tkinter.messagebox
+# from tkinter import
+window = tk.Tk()#建立窗口 对象
+window.title("my window")
+window.geometry('200x200')#中间是x字母 长和宽
+
+# tk.Label(window,text = 1).pack(side = 'top')#四个方位 top,bottom,left,right
+
+#grid用方格的形式来放置
+# for i in range(4):
+#     for j in range(3):
+#         tk.Label(window,text = 1).grid(row = i,column = j,padx = 10,pady = 10)#padx,pady是内部x,y方向上的间隔距离
+
+tk.Label(window,text = 1).place(x = 10,y = 100,anchor = 'nw')
+#一个点，放在（10,100) ,设置锚点在西北角上
+window.mainloop()
